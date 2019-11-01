@@ -26,7 +26,7 @@ public class Venda {
 	public Venda(String data, Pessoa funcionario, Pessoa cliente, String cpf, String nome, 
 			TipoPessoa tipo) {
 		this.data = data;
-		this.cliente = new Pessoa(nome, cpf, tipo);
+		this.cliente = new Cliente(nome, cpf, tipo);
 		this.funcionario = funcionario;
 		this.itens = new ArrayList<ItemVenda>();
 	}
