@@ -26,7 +26,7 @@ public class AppVenda {
 	
 	System.out.println("Qual o cpf do cliente?");
 	String cpfCliente = entrada.nextLine();
-	Pessoa cliente = new Pessoa(nomeCliente, cpfCliente, TipoPessoa.CLIENTE);
+	Pessoa cliente = new Cliente(nomeCliente, cpfCliente, TipoPessoa.CLIENTE);
 	
 	//Dados Vendedor
 	System.out.println("Qual o nome do vendedor?");

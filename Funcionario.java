@@ -84,7 +84,6 @@ public class Funcionario extends Pessoa{
 				ordenado[i] = ordenado[min];
 				ordenado[min] = aux; }
 		}
-		
 		imprimirQualidades(ordenado);
 	}
 	

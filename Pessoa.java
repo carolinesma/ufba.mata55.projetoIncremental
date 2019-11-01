@@ -1,11 +1,12 @@
 package ufba.mata55.projetoIncremental;
 
-/**Classe para objeto do tipo pessoa e seus métodos relacionados
+/**Classe abstrata Pessoa para referência das classes Cliente e Funcionário
+ * e seus métodos relacionados
 * @author Caroline da Silva Morais Alves
 * @version 5
 */
 
-public class Pessoa {
+public abstract class Pessoa {
 	
 	enum TipoPessoa {
 		FUNCIONARIO("Funcionário"),
