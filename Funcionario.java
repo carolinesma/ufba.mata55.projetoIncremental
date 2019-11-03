@@ -1,28 +1,63 @@
 package ufba.mata55.projetoIncremental;
 
-/**Classe para objeto do tipo Funcionario que herda do tipo Pessoa e seus métodos relacionados
+/**Classe abstrata Funcionario 
 * @author Caroline da Silva Morais Alves
-* @version 5
+* @version 6
 */
 
-public class Funcionario extends Pessoa{
+public abstract class Funcionario extends Pessoa{
 	private String[] qualidades;
 	private final int quantidadeQualidades = 5;
+	private float vendaMensal;
+	private String cargo;
 	
 	public Funcionario(String nome, String cpf, String data, String sexo, String telefone, 
 			TipoPessoa tipo) {
 		super(nome, cpf, data, sexo, telefone, tipo);
 		this.qualidades = new String[quantidadeQualidades];
+		this.vendaMensal = 0.0F;
 	}
 	
 	public Funcionario(String nome, String cpf, TipoPessoa tipo) {
 		super(nome, cpf, tipo);
 		this.qualidades = new String[quantidadeQualidades];
+		this.vendaMensal = 0.0F;
 		
 	}
 	
+	/*************Métodos para o cálculo de Salário**************/
+	
+	/**Método abstrato para o calculo de salário das classes filhas
+	 * 
+	 */
+	public abstract float calculaSalario();
+	
+	/**
+	 * Método que faz o cálculo da soma total de vendas por um dado funcionário 
+	 * para auxiliar no cálculo do salário
+	 * @param valorVenda
+	 */
+	public void somaVendaMensal(float valorVenda) {
+		this.vendaMensal+=valorVenda;
+		setVendaMensal(vendaMensal);
+	}
+	
+	/**
+	 * Método auxiliar para para fazer o calculo da vendaMensal apenas para objetos da Classe
+	 * Gerente e Vendedor
+	 * @param funcionario
+	 * @param valorVenda
+	 */
+	public void comissao(Funcionario funcionario, float valorVenda) {
+		if ((funcionario instanceof Vendedor)||(funcionario instanceof Gerente)) {
+			somaVendaMensal(valorVenda);
+		}
+	}
+	
+	/*********Métodos relacionados ao parametro qualidade*********************/
+	
 	/**Método para a inserção de qualidades para o tipo funcionário
-	 * o método insere a qualidade no indice indicado(n) para a posição do vetor
+	* o método insere a qualidade no indice indicado(n) para a posição do vetor
 	* @param qualidade String
 	* @param n int
 	**/
@@ -94,14 +129,33 @@ public class Funcionario extends Pessoa{
 			qualidades[i] = null; }
 	}
 	
-	/**Métodos gets e sets
-	 * 
-	 */
+	/*********** Métodos gets e sets ********8******/
+	
 	public String[] getQualidades() {
 		return qualidades;
 	}
 
 	public void setQualidades(String[] qualidades) {
 		this.qualidades = qualidades;
+	}
+
+	public int getQuantidadeQualidades() {
+		return quantidadeQualidades;
+	}
+
+	public float getVendaMensal() {
+		return vendaMensal;
+	}
+
+	public void setVendaMensal(float vendaMensal) {
+		this.vendaMensal = vendaMensal;
+	}
+
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 	}
 }

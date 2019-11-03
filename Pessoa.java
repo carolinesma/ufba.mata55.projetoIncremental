@@ -3,7 +3,7 @@ package ufba.mata55.projetoIncremental;
 /**Classe abstrata Pessoa para referência das classes Cliente e Funcionário
  * e seus métodos relacionados
 * @author Caroline da Silva Morais Alves
-* @version 5
+* @version 6
 */
 
 public abstract class Pessoa {
@@ -55,8 +55,7 @@ public abstract class Pessoa {
 			return false; }
 	}
 	
-	/** Métodos get
-	 **/
+	/** Métodos gets e sets ******/
 	public String getNome() {
 		return nome; 
 	}
@@ -81,9 +80,6 @@ public abstract class Pessoa {
 	public int getIdentificador() {
 		return identificador; 
 	}
-	
-	/**Metodos set
-	 */
 	public void setNome(String nome) {
 		this.nome = nome; 
 	}

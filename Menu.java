@@ -38,7 +38,8 @@ public class Menu {
         System.out.println("O que deseja fazer?");
         System.out.println("0. Sair");
         System.out.println("1. Adicionar Produtos");
-        System.out.println("2. Finalizar Venda");
+        System.out.println("2. Excluir Produtos");
+        System.out.println("3. Finalizar Venda");
         System.out.println("Opcao:");
     
     }

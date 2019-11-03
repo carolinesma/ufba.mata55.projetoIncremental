@@ -2,7 +2,7 @@ package ufba.mata55.projetoIncremental;
 
 /**Classe para objetos do tipo Cliente e seus métodos relacionados
 * @author Caroline da Silva Morais Alves
-* @version 5
+* @version 6
 */
 public class Cliente extends Pessoa{
 	

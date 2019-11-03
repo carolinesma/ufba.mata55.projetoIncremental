@@ -2,7 +2,7 @@ package ufba.mata55.projetoIncremental;
 
 /**Classe para objeto do tipo ItemVenda e seus métodos relacionados
 * @author Caroline da Silva Morais Alves
-* @version 5
+* @version 6
 */
 
 public class ItemVenda {
@@ -20,7 +20,15 @@ public class ItemVenda {
 		this.quantidade = 1;
 	}
 	
-	public boolean buscarCodigo(ItemVenda item, int codigo) {
+	/**
+	 * Método para comprar o código do produto do item de venda com um código desejado
+	 * método auxiliar no método de exclusão de item de venda
+	 * @param item
+	 * @param codigo
+	 * @return
+	 */
+	
+	public boolean compararCodigo(ItemVenda item, int codigo) {
 		if (item.produto.getCodigo()==codigo) {
 			return true; }
 		else {
@@ -28,7 +36,7 @@ public class ItemVenda {
 		}
 	}
 	
-	/** Métodos gets and sets
+	/** Métodos gets e sets
 	*/
 	public Produto getProduto() {
 		return produto; }

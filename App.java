@@ -1,18 +1,56 @@
 package ufba.mata55.projetoIncremental;
 import java.util.Scanner;
 
-/**Classe App para gerenciar as atividade da aplicação
+import ufba.mata55.projetoIncremental.Pessoa.TipoPessoa;
+
+/**Classe App para gerenciar as funcionalidades da aplicação
 * @author Caroline da Silva Morais Alves
-* @version 5
+* @version 6
 */
 
 public class App {
+	
+	public static void cadastroLoja(Loja loja) {
+		/***** Simulação de Cadastro *****/
+		//Para teste aparecerá a lita dos funcionario e produtos no console
+		//Funcionarios
+		Gerente gerente = new Gerente("Maria", "CPF1", TipoPessoa.FUNCIONARIO);
+		Vendedor vendedor1 = new Vendedor("Ana", "CPF2", TipoPessoa.FUNCIONARIO);
+		Vendedor vendedor2 = new Vendedor("Laura", "CPF2", TipoPessoa.FUNCIONARIO);
+		Caixa caixa = new Caixa("Joana", "CPF3", TipoPessoa.FUNCIONARIO);
+		Cliente cliente = new Cliente("Marcia", "CPF4", TipoPessoa.CLIENTE);
+		
+		loja.addPessoa(gerente);
+		loja.addPessoa(vendedor1);
+		loja.addPessoa(vendedor2);
+		loja.addPessoa(caixa);
+		loja.addPessoa(cliente);
+		
+		//Produtos
+		Produto blusa = new Produto(100, "Blusa Verde", 20.00F);
+		Produto blusa2 = new Produto(101, "Blusa Azul", 20.00F);
+		Produto calca = new Produto(102, "Calça", 50.00F);
+		Produto sapato = new Produto(103, "Sapato", 55.00F);
+		
+		loja.addProduto(blusa);
+		loja.addProduto(blusa2);
+		loja.addProduto(calca);
+		loja.addProduto(sapato);
+				
+		/****************************************/
+	}
 
 	public static void main(String[] args) {
-		Scanner entrada = new Scanner(System.in);
-		int opcao;
 		
-		do{
+		//Inicializando loja
+		Loja loja = new Loja();
+		cadastroLoja(loja);
+		
+		Scanner entrada = new Scanner(System.in);
+		 AppVenda.appVenda(loja);
+		//int opcao;
+		
+		/*do{
             Menu.menu();
             opcao = entrada.nextInt();
             
@@ -30,13 +68,13 @@ public class App {
                 break;
                 
             case 3:
-                AppVenda.appVenda();
+                AppVenda.appVenda(loja);
                 break;
                             
             default:
                 System.out.println("Opção inválida.");
             }
-        } while(opcao != 0);
+        } while(opcao != 0);*/
 		
 	entrada.close();
 	}

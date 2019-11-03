@@ -2,7 +2,7 @@ package ufba.mata55.projetoIncremental;
 
 /**Classe para objeto do tipo Produto e seus métodos relacionados
 * @author Caroline da Silva Morais Alves
-* @version 5
+* @version 6
 */
 
 public class Produto {

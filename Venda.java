@@ -7,7 +7,7 @@ import ufba.mata55.projetoIncremental.Pessoa.TipoPessoa;
 
 /**Classe para objeto do tipo Venda e seus métodos relacionados
 * @author Caroline da Silva Morais Alves
-* @version 5
+* @version 6
 */
 
 public class Venda {
@@ -34,6 +34,7 @@ public class Venda {
 	/**Método para adicionar itens na lista vendas em uma compra verificando a quantidade
 	 * retorna verificação de sucesso de inserção
 	 * @param Produto produto, int quantidade
+	 * @return
 	 **/
 	public boolean addItem (Produto produto, int quantidade) {
 		if(quantidade>0) {
@@ -46,28 +47,46 @@ public class Venda {
 	
 	/**Método para adicionar itens sem especificação de quantidade
 	 * @param Produto produto
+	 * @return
 	 **/	
-	public void addItem (Produto produto) {
-		itens.add(new ItemVenda(produto));
+	public boolean addItem (Produto produto) {
+		if(itens.add(new ItemVenda(produto)))
+			return true;
+		else return false;
 	}
 	
 	/**Método para remover itens da lista passando o código como parâmetro
-	 * faz a comparação do código atraves de um método da classe ItemVenda
+	 * chama o método do buscarItem da própria classe
 	 * @param int codigo
+	 * @return
 	 **/	
-	public void removeItem (int codigo) {
-		int i=0;
-		boolean produtoEncontrado = false;
-		while ((i < itens.size())&&(produtoEncontrado == false)) {
-			ItemVenda excluir = this.itens.get(i);
-			if (excluir.buscarCodigo(excluir, codigo)) { // compara o codigo do item excluir com o codigo passado por parâmetro
-				produtoEncontrado = true; }
-			i++; }
-		if(produtoEncontrado) {
-			itens.remove(i-1);
-			System.out.println("Produto removido"); }
+	public boolean removeItem (int codigo) {
+		ItemVenda item = buscarItem(codigo);
+		if(item!=null) {
+			itens.remove(item);
+			System.out.println("Produto removido"); 
+			return true;}
 		else {
-			System.out.println("Codigo não encontrado"); }
+			System.out.println("Código não encontrado"); 
+			return false;}
+	}
+	
+	/**
+	 * Método para buscar o Item na lista através do código, chama um método da classe item venda
+	 * para verificar se o código do item é igual ao do produto equivalente
+	 * @param codigo
+	 * @return
+	 */
+	public ItemVenda buscarItem(int codigo) {
+		Iterator<ItemVenda> iterator = itens.iterator();
+		ItemVenda item = iterator.next();//inicializando para o comparação no laço
+		
+		while((iterator.hasNext())&&!(item.compararCodigo(item, codigo))) {
+			item = iterator.next();}
+		
+		if(item.getProduto().getCodigo()==codigo)
+			return item;
+		else return item = null;
 	}
 	
 	/**Método para calcular o valor total da venda
@@ -76,13 +95,11 @@ public class Venda {
 	 */
 	public float valorVenda() {
 		float total = 0;
-    	
-		Iterator<ItemVenda> iterator = itens.iterator();
-		while (iterator.hasNext()) {
+    	Iterator<ItemVenda> iterator = itens.iterator();
+		
+    	while (iterator.hasNext()) {
 			ItemVenda item = iterator.next();
 			total += ((item.getProduto().getPreco() * item.getQuantidade())); }
-		//System.out.println(total);
-		
 		return total;
 	}
 	
